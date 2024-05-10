@@ -1,0 +1,13 @@
+services:
+  app:
+    image: ghcr.io/remla24-team6/app:latest
+    ports:
+      - 8000:8000
+    environment:
+      - MODEL_SERVICE_URL=${MODEL_SERVICE_URL}
+    command: python manage.py runserver ${APP_URL}
+  model_service:
+    image: ghcr.io/remla24-team6/model-service:latest
+    ports:
+      - 5000:5000
+    command: flask run --host=0.0.0.0
