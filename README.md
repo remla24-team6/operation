@@ -35,6 +35,6 @@ For this week's submission we implemented the following activities:
 - Updated model training repository to use the pre-prcessing library. Added linters to github workflow.
 - Created a new version-aware python library (lib-version) that can be imported in the app.
 - Created a model-service that loads a trained model (which is stored in google drive) and exposes endpoints to predict using that model.
-  This service uses the lib-ml python package for preprocessing.
+  This service uses the lib-ml python package for preprocessing. Implements Swagger for API documentation.
 - Created a Django app that has both the app-frontend and the app-service (app)
   
