@@ -41,3 +41,35 @@ Created PRs:
 - https://github.com/aditwhorra42/phising_detection_cnn/pull/3
 Approved PRs:
 - https://github.com/aditwhorra42/phising_detection_cnn/pull/5
+
+
+# A2
+-- Adit Whorra -- 
+Created PRs:
+- https://github.com/remla24-team6/ml-lib/pull/3
+Implemented repository https://github.com/remla24-team6/lib-version
+  
+Approved PRs:
+- https://github.com/remla24-team6/app/pull/1
+
+-- Rody Haket --
+
+Created PRs:
+- https://github.com/remla24-team6/model-service/pull/2
+
+Approved PRs:
+- https://github.com/Roodster/remla24-team6/pull/1
+
+-- Milan de Koning --
+Created PR:
+- https://github.com/remla24-team6/app/pull/1
+Approved PR:
+- https://github.com/remla24-team6/model-service/pull/2
+
+-- Qinxin, Ren -- 
+
+Created PRs:
+- https://github.com/remla24-team6/ml-lib/pull/2
+
+Approved PRs:
+- https://github.com/remla24-team6/ml-lib/pull/3
