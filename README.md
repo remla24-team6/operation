@@ -8,7 +8,6 @@ Operation repository for CS4295 Release Engineering for Machine Learning Applica
 3. Navigate into the repo and run `docker-compose up`
 4. Go to [http://0.0.0.0:8000/](http://0.0.0.0:8000/) and test the system.
 
-Note that due to time constraints, the model is not trained extensively. This means that the system will likely give some random-ish output.
 
 ### Repositories
 
