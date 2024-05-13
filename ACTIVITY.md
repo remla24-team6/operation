@@ -1,3 +1,16 @@
+# A2
+
+
+-- Rody Haket --
+Created PRs: 
+- https://github.com/remla24-team6/model-service/pull/2
+Approved PRs:
+- https://github.com/Roodster/remla24-team6/pull/1
+
+
+
+
+
 # A1
 
 -- Adit Whorra -- 
