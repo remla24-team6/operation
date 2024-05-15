@@ -30,7 +30,7 @@ To set up the nodes in the system, run:
 ```
 vagrant up
 ```
-Sometimes vagrant is a bit flaky and does not set up the nodes. properly. If this is the case, run:
+Sometimes vagrant is a bit flaky and does not set up the nodes properly. If this is the case, run:
 ```
 vagrant destroy <malfunctioning node>
 vagrant up
