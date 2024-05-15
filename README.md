@@ -3,7 +3,7 @@ Operation repository for CS4295 Release Engineering for Machine Learning Applica
 
 ### Repositories
 
-- operation: [remla24-team6](https://github.com/Roodster/remla24-team6/)
+- operation: [operation](https://github.com/remla24-team6/operation)
 - model training: [phishing-detection-cnn](https://github.com/remla24-team6/phishing_detection_cnn)
 - model service: [model_service](https://github.com/remla24-team6/model-service)
 - app: [app](https://github.com/remla24-team6/app)
@@ -19,7 +19,7 @@ Operation repository for CS4295 Release Engineering for Machine Learning Applica
 
 Note that due to time constraints, the model is not trained extensively. This means that the system will likely give some random-ish output.
 
-## Running with vagrant/ansible/kubernetes
+## Running with Vagrant/Ansible/Kubernetes
 
 Make sure you have cloned this repository.
 
@@ -38,7 +38,11 @@ vagrant up
 
 The control node should be available on `192.168.60.2`. The worker nodes should be available on `192.168.61.2`, `192.168.61.3` ... etc. (If you configure more than 2 worker nodes)
 
+### Ansible
+TODO
 
+### Kubernetes
+TODO
 
 
 
