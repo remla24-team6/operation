@@ -33,6 +33,7 @@ vagrant up
 Sometimes vagrant is a bit flaky and does not set up the nodes. properly. If this is the case, run:
 ```
 vagrant destroy <malfunctioning node>
+vagrant up
 ```
 
 The control node should be available on `192.168.60.2`. The worker nodes should be available on `192.168.61.2`, `192.168.61.3` ... etc. (If you configure more than 2 worker nodes)
