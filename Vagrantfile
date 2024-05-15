@@ -24,7 +24,6 @@ Vagrant.configure("2") do |config|
     end
     (1..worker_nodes).each do |i|
         config.vm.define "worker-node-#{i}" do |worker_node|
-            worker_node.vm.box = "bento/ubuntu-24.04"
             worker_node.vm.network "private_network", ip: worker_node_ip_base + ".#{i + 1}"
             worker_node.vm.provider "virtualbox" do |vb|
                 vb.memory = worker_node_mem * 1024
