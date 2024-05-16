@@ -1,0 +1,12 @@
+# setup_kubernetes_cluster.yml
+- hosts: all
+  become: yes
+  gather_facts: no
+  roles:
+    - role: minikube
+    - role: kubernetes_cluster
+    - role: helm
+    - role: prometheus
+    - role: grafana
+    - role: expose_dashboards
+    - role: kubectl_config

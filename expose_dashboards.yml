@@ -1,0 +1,8 @@
+# expose_dashboards.yml
+- hosts: all
+  tasks:
+    - name: Expose Prometheus Dashboard
+      shell: kubectl expose service prometheus-server --type=NodePort --name=prometheus-dashboard
+
+    - name: Expose Grafana Dashboard
+      shell: kubectl expose service grafana --type=NodePort --name=grafana-dashboard

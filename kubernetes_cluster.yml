@@ -1,0 +1,8 @@
+# kubernetes_cluster.yml
+- hosts: all
+  tasks:
+    - name: Start Minikube Cluster
+      shell: minikube start --driver=docker
+
+    - name: Enable Kubernetes Dashboard
+      shell: minikube addons enable dashboard

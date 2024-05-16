@@ -1,0 +1,8 @@
+# kubectl_config.yml
+- hosts: all
+  tasks:
+    - name: Copy kubeconfig to Host
+      copy:
+        src: ~/.kube/config
+        dest: /home/{{ ansible_user }}/kubeconfig
+        remote_src: yes
