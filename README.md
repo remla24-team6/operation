@@ -1,7 +1,16 @@
 # remla24-team6
 Operation repository for CS4295 Release Engineering for Machine Learning Applications (2023/24 Q4)
 
-## Deployment
+### Repositories
+
+- operation: [operation](https://github.com/remla24-team6/operation)
+- model training: [phishing-detection-cnn](https://github.com/remla24-team6/phishing_detection_cnn)
+- model service: [model_service](https://github.com/remla24-team6/model-service)
+- app: [app](https://github.com/remla24-team6/app)
+- lib-version: [lib-version](https://github.com/remla24-team6/lib-version)
+- ml-lib: [ml-lib](https://github.com/remla24-team6/ml-lib)
+
+## Running via docker-compose:
 
 1. Make sure that docker is installed.
 2. Clone the repo
@@ -9,14 +18,32 @@ Operation repository for CS4295 Release Engineering for Machine Learning Applica
 4. Go to [http://0.0.0.0:8000/](http://0.0.0.0:8000/) and test the system.
 
 
-### Repositories
+## Running with Vagrant/Ansible/Kubernetes
 
-- operation: [operation](https://github.com/Roodster/remla24-team6/)
-- model training: [phishing-detection-cnn](https://github.com/remla24-team6/phishing_detection_cnn)
-- model service: [model_service](https://github.com/remla24-team6/model-service)
-- app: [app](https://github.com/remla24-team6/app)
-- lib-version: [lib-version](https://github.com/remla24-team6/lib-version)
-- ml-lib: [ml-lib](https://github.com/remla24-team6/ml-lib)
+Make sure you have cloned this repository.
+
+### Vagrant
+
+Make sure vagrant is installed along with an appropriate provider (e.g. VirtualBox).
+To set up the nodes in the system, run:
+```
+vagrant up
+```
+Sometimes vagrant is a bit flaky and does not set up the nodes properly. If this is the case, run:
+```
+vagrant destroy <malfunctioning node>
+vagrant up
+```
+
+The control node should be available on `192.168.60.2`. The worker nodes should be available on `192.168.61.2`, `192.168.61.3` ... etc. (If you configure more than 2 worker nodes)
+
+### Ansible
+TODO
+
+### Kubernetes
+TODO
+
+
 
 ## Comments 
 
