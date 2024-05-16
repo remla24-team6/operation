@@ -1,0 +1,13 @@
+---
+- hosts: controller
+  become: true
+  tasks:
+    - name: Start Minikube with Docker driver
+      minikube:
+        state: started
+        driver: docker
+      register: minikube_result
+
+    - name: Check Minikube status (debug)
+      debug:
+        msg: "Minikube status: {{ minikube_result.stdout }}"
