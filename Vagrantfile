@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
     # I know this is bad but I cannot get it to work with SSH when running vagrant up.
     config.ssh.password = "vagrant"
 
-    config.vm.define "control-node" do |control_node|
+    config.vm.define "controller" do |control_node|
         control_node.vm.network "private_network", ip: control_node_ip
         control_node.vm.provider "virtualbox" do |vb|
             vb.memory = control_node_mem * 1024
@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
         end
     end
     (1..worker_nodes).each do |i|
-        config.vm.define "worker-node-#{i}" do |worker_node|
+        config.vm.define "node#{i}" do |worker_node|
             worker_node.vm.network "private_network", ip: worker_node_ip_base + ".#{i + 1}"
             worker_node.vm.provider "virtualbox" do |vb|
                 vb.memory = worker_node_mem * 1024
