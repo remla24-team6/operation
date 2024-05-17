@@ -18,14 +18,16 @@ Operation repository for CS4295 Release Engineering for Machine Learning Applica
 - lib-version: [lib-version](https://github.com/remla24-team6/lib-version)
 - ml-lib: [ml-lib](https://github.com/remla24-team6/ml-lib)
 
-## Running Kubernetes
-1. Install minikube on your machine.
-2. Start a local kubernetes cluster by running `minikube start --driver=docker`.
-3. Emable ingress by running `minikube addons enable ingress`.
-4. Run the application by running `kubectl apply -f kubernetes`.
-5. Check if the pods and servies are up by running `kubectl get pods` and `kubectl get services`.
-6. Ideally, the app should be accessed directly through the ingress controller. That needs to be debugged right now. For now, you can access the app by port forwrding to the port that is running the app. You can do this by running `kubectl port-forward svc/django-app-service 8000:8000`.
-7. Now, open `http://0.0.0.0:8000/` on your browser and test the app.
+## Prerequisites
+Make sure you have the following installed
+1. Docker
+2. Docker Compose
+3. Kubermetes (minikube)
+
+## Running Monitoring for kubernetes
+1. Run `docker-compose up -d` to start all the services
+2. Access Promethus: open your brwoser and go to `http://localhost:9090`
+3. Access Grafana: open your brwoser and go to `http://localhost:3000`
 
 ## Comments 
 
