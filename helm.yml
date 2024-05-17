@@ -1,8 +1,5 @@
----
-- hosts: controller
-  become: true
+# helm.yml
+- hosts: all
   tasks:
     - name: Install Helm
-      apt:
-        name: helm
-        state: present
+      shell: curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash

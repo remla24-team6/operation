@@ -31,6 +31,12 @@ Vagrant.configure("2") do |config|
             end
         end
     end
+    
+    config.vm.provision :ansible do |a|
+        a.compatibility_mode = "2.0"
+        a.playbook = "setup_kubernetes_cluster.yml"
+    end
+
 end
 
 
