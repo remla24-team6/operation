@@ -1,31 +1,32 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: phishing-detection-model
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      deployment: model
-  template:
-    metadata:
-      labels:
-        deployment: model
-    spec:
-      containers:
-      - name: model
-        image: ghcr.io/remla24-team6/model-service:latest
-        ports:
-        - containerPort: 5000
-        command: ["poetry", "run", "flask", "run", "--host=0.0.0.0", "-p", "5000"]
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: model-service
-spec:
-  selector:
-    deployment: model
-  ports:
-    - port: 5000
-      targetPort: 5000
+version: '3.8'
+
+services:
+  app:
+    image: ghcr.io/remla24-team6/app:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - MODEL_SERVICE_URL=http://172.17.0.1:5000
+    command: python manage.py runserver 0.0.0.0:8000
+    platform: linux/amd64
+
+  model_service:
+    image: ghcr.io/remla24-team6/model-service:latest
+    ports:
+      - "5001:5000"  # Change the host port to 5001
+    command: poetry run flask run --host=0.0.0.0 -p 5000
+    platform: linux/amd64
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    platform: linux/amd64
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    platform: linux/amd64

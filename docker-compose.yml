@@ -1,13 +1,32 @@
+version: '3.8'
+
 services:
   app:
     image: ghcr.io/remla24-team6/app:latest
     ports:
-      - 8000:8000
+      - "8000:8000"
     environment:
       - MODEL_SERVICE_URL=http://172.17.0.1:5000
     command: python manage.py runserver 0.0.0.0:8000
+    platform: linux/amd64
+
   model_service:
     image: ghcr.io/remla24-team6/model-service:latest
     ports:
-      - 5000:5000
+      - "5000:5000"
     command: poetry run flask run --host=0.0.0.0 -p 5000
+    platform: linux/amd64
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    platform: linux/amd64
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    platform: linux/amd64
