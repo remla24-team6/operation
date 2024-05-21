@@ -11,6 +11,7 @@ Approved PRs:
 -- Rody Haket --
 Created PRs: 
 - https://github.com/aditwhorra42/phising_detection_cnn/pull/5
+
 Approved PRs:
 - https://github.com/aditwhorra42/phising_detection_cnn/pull/2
 - https://github.com/aditwhorra42/phising_detection_cnn/pull/7
@@ -46,6 +47,8 @@ Created PRs:
 - https://github.com/remla24-team6/model-service/pull/5
 - https://github.com/remla24-team6/phishing_detection_cnn/pull/10
 - https://github.com/remla24-team6/phishing_detection_cnn/pull/9
+
+- 
 Approved PRs:
 - https://github.com/Roodster/remla24-team6/pull/1
 
