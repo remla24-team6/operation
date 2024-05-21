@@ -45,6 +45,15 @@ TODO
 
 
 
+## Running Kubernetes
+1. Install minikube on your machine.
+2. Start a local kubernetes cluster by running `minikube start --driver=docker`.
+3. Emable ingress by running `minikube addons enable ingress`.
+4. Run the application by running `kubectl apply -f kubernetes`.
+5. Check if the pods and servies are up by running `kubectl get pods` and `kubectl get services`.
+6. Create a tunnel using `minikube tunnel`
+7. Now, run the app on `localhost`
+
 ## Comments 
 
 ### Comments for A1:
