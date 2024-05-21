@@ -70,5 +70,6 @@ Approved PRs:
 Created PRs:
 - [https://github.com/remla24-team6/model-service/pull/2](https://github.com/remla24-team6/app/pull/2)
 - [https://github.com/remla24-team6/operation/pull/10](https://github.com/remla24-team6/operation/pull/10)
+
 Approved PRs:
 - [https://github.com/Roodster/remla24-team6/pull/1](https://github.com/remla24-team6/operation/pull/5)
