@@ -1,8 +1,0 @@
-# prometheus.yml
-- hosts: all
-  tasks:
-    - name: Add Prometheus Helm Repo
-      shell: helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-
-    - name: Install Prometheus
-      shell: helm install prometheus prometheus-community/prometheus

@@ -1,5 +1,0 @@
-# helm.yml
-- hosts: all
-  tasks:
-    - name: Install Helm
-      shell: curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash

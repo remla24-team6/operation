@@ -21,6 +21,13 @@ Vagrant.configure("2") do |config|
             vb.memory = control_node_mem * 1024
             vb.cpus = control_node_cores
         end
+
+        # setup worker node with ansible playbook
+        control_node.vm.provision "ansible" do |ansible|
+            ansible.compatibility_mode = "2.0"
+            ansible.playbook = "playbook.yml"
+        end
+
     end
     (1..worker_nodes).each do |i|
         config.vm.define "node#{i}" do |worker_node|
@@ -29,15 +36,13 @@ Vagrant.configure("2") do |config|
                 vb.memory = worker_node_mem * 1024
                 vb.cpus = worker_node_cores
             end
+                # setup worker node with ansible playbook
+                worker_node.vm.provision "ansible" do |ansible|
+                ansible.compatibility_mode = "2.0"
+                ansible.playbook = "playbook.yml"
+            end
         end
     end
-    
-    config.vm.provision :ansible do |a|
-        a.compatibility_mode = "2.0"
-        a.playbook = "setup_kubernetes_cluster.yml"
-    end
-
 end
-
 
 
