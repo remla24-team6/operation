@@ -24,8 +24,8 @@ Operation repository for CS4295 Release Engineering for Machine Learning Applica
 3. Emable ingress by running `minikube addons enable ingress`.
 4. Run the application by running `kubectl apply -f kubernetes`.
 5. Check if the pods and servies are up by running `kubectl get pods` and `kubectl get services`.
-6. Ideally, the app should be accessed directly through the ingress controller. That needs to be debugged right now. For now, you can access the app by port forwrding to the port that is running the app. You can do this by running `kubectl port-forward svc/django-app-service 8000:8000`.
-7. Now, open `http://0.0.0.0:8000/` on your browser and test the app.
+6. Create a tunnel using `minikube tunnel`
+7. Now, run the app on `localhost`
 
 ## Comments 
 
