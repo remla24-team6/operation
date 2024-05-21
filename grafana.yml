@@ -1,8 +1,0 @@
-# grafana.yml
-- hosts: all
-  tasks:
-    - name: Add Grafana Helm Repo
-      shell: helm repo add grafana https://grafana.github.io/helm-charts
-
-    - name: Install Grafana
-      shell: helm install grafana grafana/grafana
