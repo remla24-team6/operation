@@ -70,9 +70,9 @@ Approved PRs:
 # A3
 -- Adit Whorra -- 
 Created PRs:
-
+- [https://github.com/remla24-team6/operation/pull/6](https://github.com/remla24-team6/operation/pull/6)
 Approved PRs:
-- https://github.com/remla24-team6/app/pull/2
+- [https://github.com/remla24-team6/app/pull/2](https://github.com/remla24-team6/app/pull/2)
 
 
 -- Rody Haket --
@@ -86,7 +86,7 @@ Approved PRs:
 
 -- Milan de Koning --
 Created PR:
-- 
+- [https://github.com/remla24-team6/operation/pull/5](https://github.com/remla24-team6/operation/pull/5)
 Approved PR:
-- https://github.com/remla24-team6/operation/pull/9
+- [https://github.com/remla24-team6/operation/pull/9](https://github.com/remla24-team6/operation/pull/9)
 
