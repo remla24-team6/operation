@@ -11,6 +11,7 @@ Approved PRs:
 -- Rody Haket --
 Created PRs: 
 - https://github.com/aditwhorra42/phising_detection_cnn/pull/5
+
 Approved PRs:
 - https://github.com/aditwhorra42/phising_detection_cnn/pull/2
 - https://github.com/aditwhorra42/phising_detection_cnn/pull/7
@@ -46,6 +47,8 @@ Created PRs:
 - https://github.com/remla24-team6/model-service/pull/5
 - https://github.com/remla24-team6/phishing_detection_cnn/pull/10
 - https://github.com/remla24-team6/phishing_detection_cnn/pull/9
+
+- 
 Approved PRs:
 - https://github.com/Roodster/remla24-team6/pull/1
 
@@ -62,3 +65,27 @@ Created PRs:
 
 Approved PRs:
 - https://github.com/remla24-team6/ml-lib/pull/3
+
+
+# A3
+-- Adit Whorra -- 
+Created PRs:
+- https://github.com/aditwhorra42/phising_detection_cnn/pull/1
+- https://github.com/aditwhorra42/phising_detection_cnn/pull/7
+Approved PRs:
+- https://github.com/aditwhorra42/phising_detection_cnn/pull/4
+- 
+-- Rody Haket --
+Created PRs:
+- [https://github.com/remla24-team6/model-service/pull/2](https://github.com/remla24-team6/app/pull/2)
+- [https://github.com/remla24-team6/operation/pull/10](https://github.com/remla24-team6/operation/pull/10)
+
+Approved PRs:
+- [https://github.com/Roodster/remla24-team6/pull/1](https://github.com/remla24-team6/operation/pull/5)
+
+-- Milan de Koning --
+Created PR:
+- 
+Approved PR:
+- https://github.com/remla24-team6/operation/pull/9
+

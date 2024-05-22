@@ -3,8 +3,14 @@ kind: Ingress
 metadata:
   name: app-ingress
 spec:
-  defaultBackend:
-    service:
-      name: django-app-service
-      port:
-        number: 8000
+  rules:
+  - host: localhost
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: django-app-service
+            port:
+              number: 8000

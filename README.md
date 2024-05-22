@@ -1,7 +1,16 @@
 # remla24-team6
 Operation repository for CS4295 Release Engineering for Machine Learning Applications (2023/24 Q4)
 
-## Deployment
+### Repositories
+
+- operation: [operation](https://github.com/remla24-team6/operation/tree/A3)
+- model training: [phishing-detection-cnn](https://github.com/remla24-team6/phishing_detection_cnn/tree/A3)
+- model service: [model_service](https://github.com/remla24-team6/model-service/tree/A3)
+- app: [app](https://github.com/remla24-team6/app/tree/A3)
+- lib-version: [lib-version](https://github.com/remla24-team6/lib-version/tree/A3)
+- ml-lib: [ml-lib](https://github.com/remla24-team6/ml-lib/tree/A3)
+
+## Running via docker-compose:
 
 1. Make sure that docker is installed.
 2. Clone the repo
@@ -9,14 +18,33 @@ Operation repository for CS4295 Release Engineering for Machine Learning Applica
 4. Go to [http://0.0.0.0:8000/](http://0.0.0.0:8000/) and test the system.
 
 
-### Repositories
+## Running with Vagrant/Ansible/Kubernetes
 
-- operation: [operation](https://github.com/Roodster/remla24-team6/)
-- model training: [phishing-detection-cnn](https://github.com/remla24-team6/phishing_detection_cnn)
-- model service: [model_service](https://github.com/remla24-team6/model-service)
-- app: [app](https://github.com/remla24-team6/app)
-- lib-version: [lib-version](https://github.com/remla24-team6/lib-version)
-- ml-lib: [ml-lib](https://github.com/remla24-team6/ml-lib)
+Make sure you have cloned this repository.
+
+### Vagrant
+
+Make sure vagrant is installed along with an appropriate provider (e.g. VirtualBox).
+To set up the nodes in the system, run:
+```
+vagrant up
+```
+Sometimes vagrant is a bit flaky and does not set up the nodes properly. If this is the case, run:
+```
+vagrant destroy <malfunctioning node>
+vagrant up
+```
+
+The control node should be available on `192.168.60.2`. The worker nodes should be available on `192.168.61.2`, `192.168.61.3` ... etc. (If you configure more than 2 worker nodes)
+
+### Ansible
+TODO
+
+### Kubernetes
+TODO
+
+
+
 
 ## Prerequisites
 Make sure you have the following installed
@@ -28,6 +56,16 @@ Make sure you have the following installed
 1. Run `docker-compose up -d` to start all the services
 2. Access Promethus: open your brwoser and go to `http://localhost:9090`
 3. Access Grafana: open your brwoser and go to `http://localhost:3000`
+
+## Running Kubernetes
+1. Install minikube on your machine.
+2. Start a local kubernetes cluster by running `minikube start --driver=docker`.
+3. Emable ingress by running `minikube addons enable ingress`.
+4. Run the application by running `kubectl apply -f kubernetes`.
+5. Check if the pods and servies are up by running `kubectl get pods` and `kubectl get services`.
+6. Create a tunnel using `minikube tunnel`
+7. Now, run the app on `localhost`
+
 
 ## Comments 
 
@@ -48,4 +86,12 @@ For this week's submission we implemented the following activities:
 - Created a model-service that loads a trained model (which is stored in google drive) and exposes endpoints to predict using that model.
   This service uses the lib-ml python package for preprocessing. Implements Swagger for API documentation.
 - Created a Django app that has both the app-frontend and the app-service (app)
+
+### Comments for A3:
+For this week's submission we implemented the following activities:
+- Uses Vagrant to define the virtual hardware and network setup through infrastructure as code.
+- Applies Ansible to prepare the necessary runtime environment. Controller/node connections are not set up yet.
+- Migrates the Docker compose deployment of our application.
+- Uses Prometheus for monitoring.
+- Creates a Grafana dashboard that shows your custom metrics.
   
