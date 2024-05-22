@@ -3,12 +3,12 @@ Operation repository for CS4295 Release Engineering for Machine Learning Applica
 
 ### Repositories
 
-- operation: [operation](https://github.com/remla24-team6/operation)
-- model training: [phishing-detection-cnn](https://github.com/remla24-team6/phishing_detection_cnn)
-- model service: [model_service](https://github.com/remla24-team6/model-service)
-- app: [app](https://github.com/remla24-team6/app)
-- lib-version: [lib-version](https://github.com/remla24-team6/lib-version)
-- ml-lib: [ml-lib](https://github.com/remla24-team6/ml-lib)
+- operation: [operation](https://github.com/remla24-team6/operation/tree/A3)
+- model training: [phishing-detection-cnn](https://github.com/remla24-team6/phishing_detection_cnn/tree/A3)
+- model service: [model_service](https://github.com/remla24-team6/model-service/tree/A3)
+- app: [app](https://github.com/remla24-team6/app/tree/A3)
+- lib-version: [lib-version](https://github.com/remla24-team6/lib-version/tree/A3)
+- ml-lib: [ml-lib](https://github.com/remla24-team6/ml-lib/tree/A3)
 
 ## Running via docker-compose:
 
@@ -73,4 +73,12 @@ For this week's submission we implemented the following activities:
 - Created a model-service that loads a trained model (which is stored in google drive) and exposes endpoints to predict using that model.
   This service uses the lib-ml python package for preprocessing. Implements Swagger for API documentation.
 - Created a Django app that has both the app-frontend and the app-service (app)
+
+### Comments for A3:
+For this week's submission we implemented the following activities:
+- Uses Vagrant to define the virtual hardware and network setup through infrastructure as code.
+- Applies Ansible to prepare the necessary runtime environment. Controller/node connections are not set up yet.
+- Migrates the Docker compose deployment of our application.
+- Uses Prometheus for monitoring.
+- Creates a Grafana dashboard that shows your custom metrics.
   
