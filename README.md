@@ -80,5 +80,5 @@ For this week's submission we implemented the following activities:
 - Applies Ansible to prepare the necessary runtime environment. Controller/node connections are not set up yet.
 - Migrates the Docker compose deployment of our application.
 - Uses Prometheus for monitoring.
-- Creates a Grafana dashboard that shows your custom metrics.
+- Creates a Grafana dashboard that shows our custom metrics.
   
