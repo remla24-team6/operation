@@ -72,7 +72,7 @@ Approved PRs:
 Created PRs:
 
 Approved PRs:
--
+- https://github.com/remla24-team6/app/pull/2
 
 
 -- Rody Haket --
