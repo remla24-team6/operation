@@ -8,6 +8,7 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
   model_service:
     image: ghcr.io/remla24-team6/model-service:latest
+    env_file: .flaskenv
     ports:
       - 5000:5000
     command: poetry run flask run --host=0.0.0.0 -p 5000
