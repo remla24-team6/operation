@@ -5,7 +5,7 @@ services:
       - 8000:8000
     environment:
       - MODEL_SERVICE_URL=http://172.17.0.1:5000
-    command: python manage.py runserver 127.0.0.1:8000
+    command: python manage.py runserver 0.0.0.0:8000
   model_service:
     image: ghcr.io/remla24-team6/model-service:latest
     env_file: .flaskenv
