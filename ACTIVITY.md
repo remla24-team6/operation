@@ -68,6 +68,9 @@ Approved PRs:
 
 
 # A3
+
+NOTE: Qinxin, Ren left our group.
+
 -- Adit Whorra -- 
 Created PRs:
 - [https://github.com/remla24-team6/operation/pull/6](https://github.com/remla24-team6/operation/pull/6)
@@ -96,3 +99,43 @@ Created PR:
 Approved PR:
 - [https://github.com/remla24-team6/operation/pull/9](https://github.com/remla24-team6/operation/pull/9)
 
+
+
+
+# A4 
+
+NOTE: Arnob Chowdhury joined our group during this assignment.
+
+-- Adit Whorra -- 
+Created PRs:
+- [https://github.com/remla24-team6/phishing_detection_cnn/pull/22](https://github.com/remla24-team6/phishing_detection_cnn/pull/22)
+
+
+Approved PRs:
+- https://github.com/remla24-team6/phishing_detection_cnn/pull/24
+
+-- Rody Haket --
+
+Created PRs:
+- [https://github.com/remla24-team6/phishing_detection_cnn/pull/18](https://github.com/remla24-team6/phishing_detection_cnn/pull/18)
+- [https://github.com/remla24-team6/phishing_detection_cnn/pull/21](https://github.com/remla24-team6/phishing_detection_cnn/pull/21)
+
+Approved PRs:
+- [https://github.com/remla24-team6/phishing_detection_cnn/pull/20](https://github.com/remla24-team6/phishing_detection_cnn/pull/20)
+
+-- Milan de Koning --
+
+Created PR:
+- [https://github.com/remla24-team6/phishing_detection_cnn/pull/20](https://github.com/remla24-team6/phishing_detection_cnn/pull/20)
+  
+Approved PR:
+- [https://github.com/remla24-team6/phishing_detection_cnn/pull/18](https://github.com/remla24-team6/phishing_detection_cnn/pull/18)
+- [https://github.com/remla24-team6/phishing_detection_cnn/pull/21](https://github.com/remla24-team6/phishing_detection_cnn/pull/21)
+
+-- Arnob Chowdhury  --
+
+Created PRs:
+- [https://github.com/remla24-team6/phishing_detection_cnn/pull/15](https://github.com/remla24-team6/phishing_detection_cnn/pull/15)
+
+Approved PRs:
+- [https://github.com/remla24-team6/phishing_detection_cnn/pull/23](https://github.com/remla24-team6/phishing_detection_cnn/pull/23)
