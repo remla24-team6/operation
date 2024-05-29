@@ -81,4 +81,22 @@ For this week's submission we implemented the following activities:
 - Migrates the Docker compose deployment of our application.
 - Uses Prometheus for monitoring.
 - Creates a Grafana dashboard that shows our custom metrics.
+
+  
+### Comments for A4:
+
+NOTE: We skip the inference and memory test by default due to their computational expensiveness. Setting the flag `SKIP_<INFERENCE|MEMORY>_TEST=False` allows u to run the tests if desired.
+
+For this week's submission we implemented the following activities:
+- We have a test for non-determinism robustness.
+- We have a test that uses data slices to test model capabilities.
+- We have at least one test for each of the following angle:
+  -  Feature and Data;
+  -  Model Development;
+  -  ML infrastructure;
+  -  Monitoring tests. 
+  -  Memory and Performance test.
+- We have an initial mutamorphic test. 
+  - Tests are triggered by running dvc repro.
+
   
