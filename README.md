@@ -4,7 +4,7 @@ Operation repository for CS4295 Release Engineering for Machine Learning Applica
 ### Repositories
 
 - operation: [operation](https://github.com/remla24-team6/operation/tree/A3)
-- model training: [phishing-detection-cnn](https://github.com/remla24-team6/phishing_detection_cnn/tree/A3)
+- model training: [phishing-detection-cnn](https://github.com/remla24-team6/phishing_detection_cnn/tree/A4)
 - model service: [model_service](https://github.com/remla24-team6/model-service/tree/A3)
 - app: [app](https://github.com/remla24-team6/app/tree/A3)
 - lib-version: [lib-version](https://github.com/remla24-team6/lib-version/tree/A3)
