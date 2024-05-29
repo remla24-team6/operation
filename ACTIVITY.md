@@ -123,7 +123,9 @@ Created PRs:
 Approved PRs:
 - [https://github.com/remla24-team6/phishing_detection_cnn/pull/20](https://github.com/remla24-team6/phishing_detection_cnn/pull/20)
 - [https://github.com/remla24-team6/phishing_detection_cnn/pull/15](https://github.com/remla24-team6/phishing_detection_cnn/pull/15)
-- 
+- [https://github.com/remla24-team6/phishing_detection_cnn/pull/22](https://github.com/remla24-team6/phishing_detection_cnn/pull/22)
+
+
 -- Milan de Koning --
 
 Created PR:
