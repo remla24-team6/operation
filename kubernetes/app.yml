@@ -1,7 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: phishing-detection-app
+  name: phishing-detection-app-v1
+  namespace: operations
 spec:
   replicas: 1
   selector:
@@ -9,8 +10,7 @@ spec:
       deployment: app
   template:
     metadata:
-      labels:
-        deployment: app
+      labels: { deployment: app, version: v1 }
     spec:
       containers:
       - name: django-app
@@ -22,10 +22,35 @@ spec:
             name: app-config
         command: ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phishing-detection-app-v2
+  namespace: operations
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: app
+  template:
+    metadata:
+      labels: { deployment: app, version: v2 }
+    spec:
+      containers:
+      - name: django-app
+        image: ghcr.io/remla24-team6/app:0.0.7
+        ports:
+        - containerPort: 8000
+        envFrom:
+        - configMapRef:
+            name: app-config
+        command: ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+---
 apiVersion: v1
 kind: Service
 metadata:
   name: django-app-service
+  namespace: operations
 spec:
   selector:
     deployment: app

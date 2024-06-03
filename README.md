@@ -40,19 +40,16 @@ The control node should be available on `192.168.60.2`. The worker nodes should 
 ### Ansible
 TODO
 
-### Kubernetes
-TODO
-
-
-
-## Running Kubernetes
+## Running Kubernetes (on istio service mesh).
 1. Install minikube on your machine.
-2. Start a local kubernetes cluster by running `minikube start --driver=docker`.
-3. Emable ingress by running `minikube addons enable ingress`.
-4. Run the application by running `kubectl apply -f kubernetes`.
-5. Check if the pods and servies are up by running `kubectl get pods` and `kubectl get services`.
-6. Create a tunnel using `minikube tunnel`
-7. Now, run the app on `localhost`
+2. Start a local kubernetes cluster by running `minikube start --driver=docker`. Note: you can choose to give more resources to the cluster by adding flags `--memory=4096 --cpus=4`.
+3. Install istioctl on your machine by running `istioctl install` after adding <path-to-istio>/bin to your PATH. For istio, make sure you install all the necessary add ons by running `kubectl apply -f <path-to-istio>/samples/addons/[prometheus/jaeger/kiali].yaml`.
+4. Create namespace to run our project by running `kubectl create namespace operations`.
+5. Add istio injection for the operations namespace by running `kubectl label ns operations istio-injection=enabled`
+6. Run the application by running `kubectl apply -f kubernetes` from the root directory of this repository.
+7. Check if the pods and servies are up by running `kubectl get pods -n operations` and `kubectl get services -n operations`.
+8. Create a tunnel using `minikube tunnel`
+9.  Now, run the app on `localhost`
 
 ## Comments 
 
