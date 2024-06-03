@@ -2,6 +2,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
   name: istio-gateway
+  namespace: operations
 spec:
   selector:
     istio: ingressgateway
@@ -13,6 +14,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
   name: app-dr
+  namespace: operations
 spec:
   host: django-app-service
   subsets:
@@ -25,6 +27,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
   name: entry-service
+  namespace: operations
 spec:
   gateways: [ istio-gateway ]
   hosts: [ "*" ]
@@ -33,7 +36,7 @@ spec:
     - uri:
         prefix: /
     route:
-    - destination: { host: app , subset: v1 }
+    - destination: { host: django-app-service , subset: v1 }
       weight: 90
-    - destination: { host: app , subset: v2 }
+    - destination: { host: django-app-service , subset: v2 }
       weight: 10
