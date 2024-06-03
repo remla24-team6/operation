@@ -142,3 +142,23 @@ Created PRs:
 
 Approved PRs:
 - [https://github.com/remla24-team6/phishing_detection_cnn/pull/23](https://github.com/remla24-team6/phishing_detection_cnn/pull/23)
+
+
+
+
+
+
+-- Rody Haket --
+
+Created PRs:
+- [https://github.com/remla24-team6/model-service/pull/9](https://github.com/remla24-team6/model-service/pull/9)
+- [https://github.com/remla24-team6/phishing_detection_cnn/pull/24](https://github.com/remla24-team6/phishing_detection_cnn/pull/24)
+Approved PRs:
+- [https://github.com/remla24-team6/operation/pull/11](https://github.com/remla24-team6/operation/pull/11)
+
+
+
+
+
+
+
