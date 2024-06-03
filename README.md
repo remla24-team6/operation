@@ -51,6 +51,10 @@ TODO
 8. Create a tunnel using `minikube tunnel`
 9.  Now, run the app on `localhost`
 
+## Rate limiting
+To enable rate limiting, run `kubectl apply -f <path-to-istio>/samples/ratelimit/rate-limit-service.yaml`. 
+The server should respond with `429 Too Many Requests` if you send more than 10 requests in 1 minute.
+
 ## Comments 
 
 ### Comments for A1:
