@@ -43,14 +43,13 @@ TODO
 ## Running Kubernetes (on istio service mesh).
 1. Install minikube on your machine.
 2. Start a local kubernetes cluster by running `minikube start --driver=docker`. Note: you can choose to give more resources to the cluster by adding flags `--memory=4096 --cpus=4`.
-3. Install istioctl on your machine. For istio, make sure you install all the necessary add ons by running `kubectl apply -f <path-to-istio>/samples/addons/[prometheus/jaeger/kiali].yaml`.
-4. Enable ingress by running `minikube addons enable ingress`.
-5. Create namespace to run our project by running `kubectl create namespace operations`.
-6. Add istio injection for the operations namespace by running `kubectl label ns operations istio-injection=enabled`
-7. Run the application by running `kubectl apply -f kubernetes` from the root directory of this repository.
-8. Check if the pods and servies are up by running `kubectl get pods -n operations` and `kubectl get services -n operations`.
-9. Create a tunnel using `minikube tunnel`
-10. Now, run the app on `localhost`
+3. Install istioctl on your machine by running `istioctl install` after adding <path-to-istio>/bin to your PATH. For istio, make sure you install all the necessary add ons by running `kubectl apply -f <path-to-istio>/samples/addons/[prometheus/jaeger/kiali].yaml`.
+4. Create namespace to run our project by running `kubectl create namespace operations`.
+5. Add istio injection for the operations namespace by running `kubectl label ns operations istio-injection=enabled`
+6. Run the application by running `kubectl apply -f kubernetes` from the root directory of this repository.
+7. Check if the pods and servies are up by running `kubectl get pods -n operations` and `kubectl get services -n operations`.
+8. Create a tunnel using `minikube tunnel`
+9.  Now, run the app on `localhost`
 
 ## Comments 
 
