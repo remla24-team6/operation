@@ -68,6 +68,10 @@ To set up the dashboard, please:
 ![Dashboard](assets/dashboard.png)
 
 
+## Rate limiting
+To enable rate limiting, run `kubectl apply -f <path-to-istio>/samples/ratelimit/rate-limit-service.yaml`. 
+The server should respond with `429 Too Many Requests` if you send more than 10 requests in 1 minute.
+
 ## Comments 
 
 ### Comments for A1
