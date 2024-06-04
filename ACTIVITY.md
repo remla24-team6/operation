@@ -156,7 +156,12 @@ Created PRs:
 Approved PRs:
 - [https://github.com/remla24-team6/operation/pull/11](https://github.com/remla24-team6/operation/pull/11)
 
+-- Milan de Koning --
 
+Created PR:
+- [https://github.com/remla24-team6/operation/pull/14](https://github.com/remla24-team6/operation/pull/14)
+Approved PR:
+- [https://github.com/remla24-team6/operation/pull/10](https://github.com/remla24-team6/operation/pull/10)
 
 
 
