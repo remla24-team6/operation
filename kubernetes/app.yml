@@ -2,15 +2,26 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: phishing-detection-app-v1
+<<<<<<< HEAD
+=======
   namespace: operations
+>>>>>>> main
 spec:
   replicas: 1
   selector:
     matchLabels:
-      deployment: app
+      deployment: app-v1
   template:
     metadata:
+<<<<<<< HEAD
+      labels:
+        deployment: app-v1
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '8000'
+=======
       labels: { deployment: app, version: v1 }
+>>>>>>> main
     spec:
       containers:
       - name: django-app
@@ -53,7 +64,20 @@ metadata:
   namespace: operations
 spec:
   selector:
+    deployment: app-v1
+  ports:
+    - port: 8000
+      targetPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: django-app-service-v2
+  labels:
     deployment: app
+spec:
+  selector:
+    deployment: app-v2
   ports:
     - port: 8000
       targetPort: 8000
