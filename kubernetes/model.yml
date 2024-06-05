@@ -14,11 +14,12 @@ spec:
         deployment: model
     spec:
       containers:
-      - name: model
-        image: ghcr.io/remla24-team6/model-service:latest
-        ports:
-        - containerPort: 5000
-        command: ["poetry", "run", "flask", "run", "--host=0.0.0.0", "-p", "5000"]
+        - name: model
+          image: ghcr.io/remla24-team6/model-service:v1.0.12
+          ports:
+            - containerPort: 5000
+          command:
+            ["poetry", "run", "flask", "run", "--host=0.0.0.0", "-p", "5000"]
 ---
 apiVersion: v1
 kind: Service
