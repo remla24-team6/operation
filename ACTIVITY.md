@@ -170,5 +170,11 @@ Approved PR:
 - [https://github.com/remla24-team6/operation/pull/14](https://github.com/remla24-team6/operation/pull/14)
 
 
+-- Adit Whorra --
 
+Created PR:
+- [https://github.com/remla24-team6/operation/pull/11](https://github.com/remla24-team6/operation/pull/11)
+  
+Approved PR:
+- [https://github.com/remla24-team6/phishing_detection_cnn/pull/24](https://github.com/remla24-team6/phishing_detection_cnn/pull/24)
 
