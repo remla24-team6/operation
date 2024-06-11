@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: phishing-detection-app-monitor
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      deployment: app
+  endpoints:
+    - port: 8000
+  namespaceSelector:
+    matchNames:
+      - default

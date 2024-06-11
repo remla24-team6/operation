@@ -3,12 +3,12 @@ Operation repository for CS4295 Release Engineering for Machine Learning Applica
 
 ### Repositories
 
-- operation: [operation](https://github.com/remla24-team6/operation)
-- model training: [phishing-detection-cnn](https://github.com/remla24-team6/phishing_detection_cnn)
-- model service: [model_service](https://github.com/remla24-team6/model-service)
-- app: [app](https://github.com/remla24-team6/app)
-- lib-version: [lib-version](https://github.com/remla24-team6/lib-version)
-- ml-lib: [ml-lib](https://github.com/remla24-team6/ml-lib)
+- operation: [operation](https://github.com/remla24-team6/operation/tree/A3)
+- model training: [phishing-detection-cnn](https://github.com/remla24-team6/phishing_detection_cnn/tree/A4)
+- model service: [model_service](https://github.com/remla24-team6/model-service/tree/A3)
+- app: [app](https://github.com/remla24-team6/app/tree/A3)
+- lib-version: [lib-version](https://github.com/remla24-team6/lib-version/tree/A3)
+- ml-lib: [ml-lib](https://github.com/remla24-team6/ml-lib/tree/A3)
 
 ## Running via docker-compose:
 
@@ -40,10 +40,16 @@ The control node should be available on `192.168.60.2`. The worker nodes should 
 ### Ansible
 TODO
 
-### Kubernetes
-TODO
-
-
+## Running Kubernetes (on istio service mesh).
+1. Install minikube on your machine.
+2. Start a local kubernetes cluster by running `minikube start --driver=docker`. Note: you can choose to give more resources to the cluster by adding flags `--memory=4096 --cpus=4`.
+3. Install istioctl on your machine by running `istioctl install` after adding <path-to-istio>/bin to your PATH. For istio, make sure you install all the necessary add ons by running `kubectl apply -f <path-to-istio>/samples/addons/[prometheus/jaeger/kiali].yaml`.
+4. Create namespace to run our project by running `kubectl create namespace operations`.
+5. Add istio injection for the operations namespace by running `kubectl label ns operations istio-injection=enabled`
+6. Run the application by running `kubectl apply -f kubernetes` from the root directory of this repository.
+7. Check if the pods and servies are up by running `kubectl get pods -n operations` and `kubectl get services -n operations`.
+8. Create a tunnel using `minikube tunnel`
+9.  Now, run the app on `localhost`
 
 ## Comments 
 
@@ -64,4 +70,30 @@ For this week's submission we implemented the following activities:
 - Created a model-service that loads a trained model (which is stored in google drive) and exposes endpoints to predict using that model.
   This service uses the lib-ml python package for preprocessing. Implements Swagger for API documentation.
 - Created a Django app that has both the app-frontend and the app-service (app)
+
+### Comments for A3:
+For this week's submission we implemented the following activities:
+- Uses Vagrant to define the virtual hardware and network setup through infrastructure as code.
+- Applies Ansible to prepare the necessary runtime environment. Controller/node connections are not set up yet.
+- Migrates the Docker compose deployment of our application.
+- Uses Prometheus for monitoring.
+- Creates a Grafana dashboard that shows our custom metrics.
+
+  
+### Comments for A4:
+
+NOTE: We skip the inference and memory test by default due to their computational expensiveness. Setting the flag `SKIP_<INFERENCE|MEMORY>_TEST=False` allows u to run the tests if desired.
+
+For this week's submission we implemented the following activities:
+- We have a test for non-determinism robustness.
+- We have a test that uses data slices to test model capabilities.
+- We have at least one test for each of the following angle:
+  -  Feature and Data;
+  -  Model Development;
+  -  ML infrastructure;
+  -  Monitoring tests. 
+  -  Memory and Performance test.
+- We have an initial mutamorphic test. 
+  - Tests are triggered by running dvc repro.
+
   
