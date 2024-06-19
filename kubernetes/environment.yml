@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: app-config
-  namespace: operations
-data:
-  MODEL_SERVICE_URL: "http://model-service:5000"
