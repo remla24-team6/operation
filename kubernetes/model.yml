@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: model
-          image: ghcr.io/remla24-team6/model-service:v1.0.12
+          image: ghcr.io/remla24-team6/model-service:latest
           ports:
             - containerPort: 5000
           command:

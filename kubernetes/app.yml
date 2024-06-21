@@ -7,10 +7,12 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      deployment: app-v1
+      deployment: app-v1 # Changed to match template's labels
   template:
     metadata:
-      labels: { deployment: app, version: v1 }
+      labels:
+        deployment: app-v1 # Changed to match selector
+        version: v1
     spec:
       containers:
         - name: django-app
@@ -31,10 +33,12 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      deployment: app
+      deployment: app-v2 # Changed to match template's labels
   template:
     metadata:
-      labels: { deployment: app, version: v2 }
+      labels:
+        deployment: app-v2 # Changed to match selector
+        version: v2
     spec:
       containers:
         - name: django-app
@@ -53,7 +57,7 @@ metadata:
   namespace: operations
 spec:
   selector:
-    deployment: app-v1
+    deployment: app-v1 # Changed to match deployment selector for v1
   ports:
     - port: 8000
       targetPort: 8000
@@ -62,11 +66,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: django-app-service-v2
-  labels:
-    deployment: app
+  namespace: operations
 spec:
   selector:
-    deployment: app-v2
+    deployment: app-v2 # Changed to match deployment selector for v2
   ports:
     - port: 8000
       targetPort: 8000
