@@ -18,6 +18,9 @@ spec:
           image: ghcr.io/remla24-team6/model-service:latest
           ports:
             - containerPort: 5000
+          envFrom:
+            - configMapRef:
+                name: flaskenv-config
           command:
             ["poetry", "run", "flask", "run", "--host=0.0.0.0", "-p", "5000"]
 ---
