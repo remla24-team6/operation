@@ -12,12 +12,18 @@ spec:
     metadata:
       labels:
         deployment: model
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "{{ .Values.model.servicePort }}"
     spec:
       containers:
       - name: {{ .Release.Name }}-model
         image: ghcr.io/remla24-team6/model-service:{{ .Values.model.version }}
         ports:
         - containerPort: {{ .Values.model.servicePort }}
+        envFrom:
+            - configMapRef:
+                name: flaskenv-config
         command: ["poetry", "run", "flask", "run", "--host=0.0.0.0", "-p", "{{ .Values.model.servicePort }}"]
 ---
 apiVersion: v1
