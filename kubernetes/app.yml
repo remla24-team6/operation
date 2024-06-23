@@ -13,6 +13,9 @@ spec:
       labels:
         deployment: app-v1 # Changed to match selector
         version: v1
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
     spec:
       containers:
         - name: django-app
@@ -39,10 +42,13 @@ spec:
       labels:
         deployment: app-v2 # Changed to match selector
         version: v2
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
     spec:
       containers:
         - name: django-app
-          image: ghcr.io/remla24-team6/app:0.0.7
+          image: ghcr.io/remla24-team6/app:0.1.5
           ports:
             - containerPort: 8000
           envFrom:

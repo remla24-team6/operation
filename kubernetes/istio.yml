@@ -7,8 +7,8 @@ spec:
   selector:
     istio: ingressgateway
   servers:
-  - port: { number: 80, name: http, protocol: HTTP }
-    hosts: [ "*" ]
+    - port: { number: 80, name: http, protocol: HTTP }
+      hosts: ["*"]
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
@@ -18,10 +18,10 @@ metadata:
 spec:
   host: django-app-service
   subsets:
-  - name: v1
-    labels: { version: v1 }
-  - name: v2
-    labels: { version: v2 }
+    - name: v1
+      labels: { version: v1 }
+    - name: v2
+      labels: { version: v2 }
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
@@ -29,14 +29,14 @@ metadata:
   name: entry-service
   namespace: operations
 spec:
-  gateways: [ istio-gateway ]
-  hosts: [ "*" ]
+  gateways: [istio-gateway]
+  hosts: ["*"]
   http:
-  - match:
-    - uri:
-        prefix: /
-    route:
-    - destination: { host: django-app-service , subset: v1 }
-      weight: 90
-    - destination: { host: django-app-service , subset: v2 }
-      weight: 10
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination: { host: django-app-service, subset: v1 }
+          weight: 90
+        - destination: { host: django-app-service, subset: v2 }
+          weight: 10
