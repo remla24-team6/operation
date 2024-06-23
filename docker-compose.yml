@@ -9,6 +9,8 @@ services:
   model_service:
     image: ghcr.io/remla24-team6/model-service:latest
     env_file: .flaskenv
+    volumes:
+      - ./:/app
     ports:
       - 5000:5000
     command: poetry run flask run --host=0.0.0.0 -p 5000
