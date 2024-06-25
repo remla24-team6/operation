@@ -14,8 +14,9 @@ Operation repository for CS4295 Release Engineering for Machine Learning Applica
 
 1. Make sure that docker is installed.
 2. Clone the repo
-3. Navigate into the repo and run `docker-compose up`
-4. Go to [http://0.0.0.0:8000/](http://0.0.0.0:8000/) and test the system.
+3. Perform the API Configuration as described [here](https://github.com/remla24-team6/model-service) (Create the `.flaskenv` file)
+4. Navigate into the repo and run `docker-compose up`
+5. Go to [http://0.0.0.0:8000/](http://0.0.0.0:8000/) and test the system.
 
 
 ## Running with Vagrant/Ansible/Kubernetes
