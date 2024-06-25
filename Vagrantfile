@@ -1,4 +1,4 @@
-control_node_cores = 1
+control_node_cores = 2
 control_node_mem = 4
 control_node_ip = "192.168.60.2"
 
@@ -25,22 +25,28 @@ Vagrant.configure("2") do |config|
         # setup worker node with ansible playbook
         control_node.vm.provision "ansible" do |ansible|
             ansible.compatibility_mode = "2.0"
-            ansible.playbook = "playbook.yml"
+            ansible.playbook = "ansible/provisioning.yml"
+            ansible.extra_vars = {
+                    "controller_ip" => control_node_ip
+                }
         end
 
     end
     (1..worker_nodes).each do |i|
-        config.vm.define "node#{i}" do |worker_node|
+        config.vm.define "worker#{i}" do |worker_node|
             worker_node.vm.network "private_network", ip: worker_node_ip_base + ".#{i + 1}"
             worker_node.vm.provider "virtualbox" do |vb|
                 vb.memory = worker_node_mem * 1024
                 vb.cpus = worker_node_cores
             end
                 # setup worker node with ansible playbook
-                worker_node.vm.provision "ansible" do |ansible|
+            worker_node.vm.provision "ansible" do |ansible|
                 ansible.compatibility_mode = "2.0"
-                ansible.playbook = "playbook.yml"
-            end
+                ansible.playbook = "ansible/provisioning.yml"
+                ansible.extra_vars = {
+                    "controller_ip" => control_node_ip
+                }
+        end
         end
     end
 end

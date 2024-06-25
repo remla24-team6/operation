@@ -1,24 +1,118 @@
 ---
-
 - hosts: all
   become: yes
   tasks:
-    - name: Update apt cache
-      apt:
-        update_cache: yes
-
     - name: Install Docker
       apt:
         name: docker.io
         state: present
+        update_cache: yes
 
-    - name: Add ansible user to docker group
-      user:
-        name: "{{ ansible_user }}"
-        groups: docker
-        append: yes
+    - name: Get Kubernetes package key
+      shell: curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | gpg --dearmor -o /usr/share/keyrings/kubernetes-apt-keyring.gpg
+      args:
+        creates: /usr/share/keyrings/kubernetes-apt-keyring.gpg
 
-    - name: Install minikube
+    - name: Install Kubernetes repository
+      apt_repository:
+        filename: kubernetes
+        repo: "deb [signed-by=/usr/share/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /"
+
+    - name: Install kubeadm, kubelet, and kubectl
       apt:
-        deb: "https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb"
+        name: "{{ item }}"
         state: present
+        update_cache: yes
+      loop:
+        - kubelet
+        - kubeadm
+        - kubectl
+
+    - name: Disable swap
+      command: swapoff -a
+
+- hosts: controller
+  become: yes
+  tasks:
+    - name: Reset Kubernetes
+      command: kubeadm reset -f
+
+    - name: Kill kube-apiserver
+      command: pkill kube-apis
+      ignore_errors: true
+
+    - name: Pause for 25 seconds to wait for process kill
+      ansible.builtin.pause:
+        seconds: 25
+
+    - name: Allow iptables FORWARD policy
+      ansible.posix.sysctl:
+        name: net.ipv4.ip_forward
+        value: 1
+        state: present
+        reload: true
+
+    - name: Initialize the Kubernetes cluster
+      command: kubeadm init --pod-network-cidr=10.244.0.0/16
+      register: k8s_init
+
+
+    - name: Create .kube directory
+      file:
+        path: /home/{{ ansible_user }}/.kube
+        state: directory
+        mode: '0755'
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+
+    - name: Copy admin.conf to user's kube config
+      copy:
+        src: /etc/kubernetes/admin.conf
+        dest: "/home/{{ ansible_user }}/.kube/config"
+        remote_src: yes
+
+    - name: Set ownership for the kube config
+      file:
+        path: /home/{{ ansible_user }}/.kube/config
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: '0644'
+
+    - name: Install Flannel network plugin
+      command: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+      become_user: "{{ ansible_user }}"
+
+    - name: Save join command to a file
+      command: kubeadm token create --print-join-command
+      register: join_command
+
+    - name: Save join command to a file
+      copy:
+        content: "{{ join_command.stdout }}"
+        dest: /home/{{ ansible_user }}/join_command
+        mode: '0644'
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+
+    - name: Disable firewall
+      command: sudo ufw disable
+
+    - name: Reboot
+      ansible.builtin.reboot:
+        reboot_timeout: 60
+
+
+- hosts: worker1, worker2
+  become: yes
+  tasks:
+    - name: Retrieve join command from master
+      slurp:
+        src: /home/{{ ansible_user }}/join_command
+      delegate_to: controller
+      register: join_command_file
+
+    - debug: msg="{{ (join_command_file.content | b64decode | replace('10.0.2.15', '192.168.60.2')) + ' --v=5' }}"
+
+
+    - name: Join the Kubernetes cluster
+      command: "{{ (join_command_file.content | b64decode | replace('10.0.2.15', '192.168.60.2')) + ' --v=5' }}"
