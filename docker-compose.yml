@@ -4,13 +4,13 @@ services:
     ports:
       - 8000:8000
     environment:
-      - MODEL_SERVICE_URL=http://172.17.0.1:5000
+      - MODEL_SERVICE_URL=http://model_service:5000
     command: python manage.py runserver 0.0.0.0:8000
   model_service:
     image: ghcr.io/remla24-team6/model-service:latest
     env_file: .flaskenv
     volumes:
-      - ./:/app
+      - ./:/app/data
     ports:
       - 5000:5000
     command: poetry run flask run --host=0.0.0.0 -p 5000
