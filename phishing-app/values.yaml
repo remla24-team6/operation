@@ -10,8 +10,8 @@ app:
   servicePort: 8000
   targetPort: 8000
   replicaCount: 1
-  mountPath: "./"
-  
+  mountPath: /usr/local/phishing/app/data
+
 model:
   version: "latest"
   servicePort: 5000

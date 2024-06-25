@@ -11,5 +11,5 @@ data:
   GDRIVE_ID: "1e1FyntLFwb1heG-_64uzxktGtGiD-kHs"
   SAVE_MODEL_FOLDER: "models/"
   SAVE_MODEL_FILENAME: "model.joblib"
-  SAVE_TRAINING_DATA_FOLDER: "/data"
+  SAVE_TRAINING_DATA_FOLDER: "/usr/local/phishing/app/data/"
   SAVE_TRAINING_DATA_FILENAME: "data.csv"
