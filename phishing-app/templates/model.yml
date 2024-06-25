@@ -23,7 +23,7 @@ spec:
         - containerPort: {{ .Values.model.servicePort }}
         envFrom:
             - configMapRef:
-                name: flaskenv-config
+                name: {{ .Release.Name }}-app-config
         command: ["poetry", "run", "flask", "run", "--host=0.0.0.0", "-p", "{{ .Values.model.servicePort }}"]
 ---
 apiVersion: v1
