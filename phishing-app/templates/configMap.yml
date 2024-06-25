@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: flaskenv-config
+  namespace: operations
+data:
+  IS_DEBUG: "True"
+  HOST: "0.0.0.0"
+  PORT: "5001"
+  GDRIVE_ID: "e1FyntLFwb1heG-_64uzxktGtGiD-kHs"
+  SAVE_MODEL_FOLDER: "models/"
+  SAVE_MODEL_FILENAME: "model.joblib"
