@@ -3,8 +3,12 @@ services:
     image: ghcr.io/remla24-team6/app:latest
     ports:
       - 8000:8000
+    volumes:
+      - ./:/app/data
     environment:
       - MODEL_SERVICE_URL=http://model_service:5000
+      - SAVE_TRAINING_DATA_FOLDER=data
+      - SAVE_TRAINING_DATA_FILENAME=data.csv
     command: python manage.py runserver 0.0.0.0:8000
   model_service:
     image: ghcr.io/remla24-team6/model-service:latest
