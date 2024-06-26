@@ -19,29 +19,28 @@ Operation repository for CS4295 Release Engineering for Machine Learning Applica
 5. Go to [http://0.0.0.0:8000/](http://0.0.0.0:8000/) and test the system.
 
 
-## Running with Vagrant/Ansible/Kubernetes
+## Provisioning
 
 Make sure you have cloned this repository.
-
-### Vagrant
 
 Make sure vagrant is installed along with an appropriate provider (e.g. VirtualBox).
 To set up the nodes in the system, run:
 ```
-vagrant up
+vagrant up --provision
 ```
 Sometimes vagrant is a bit flaky and does not set up the nodes properly. If this is the case, run:
 ```
 vagrant destroy <malfunctioning node>
-vagrant up
+vagrant up --provision
 ```
 
 The control node should be available on `192.168.60.2`. The worker nodes should be available on `192.168.61.2`, `192.168.61.3` ... etc. (If you configure more than 2 worker nodes)
+Upon running `vagrant up --provision`, the ansible playbook should automatically be triggered for any node. Two attempts at provisioning (`playbook.yaml` and `ansible/provisioning.yaml`) have been made (with a lot of time and effort),
+but neither of them worked in the end. Both install docker and a kubernetes distribution on the respective nodes, initialize a cluster in the control node and generate a join command.
+Furthermore, in both cases, the join command is extracted in the worker node, but we did not manage to get the worker nodes to join the control nodes. However, we hope that these attempts display our efforts
 
-### Ansible
-TODO
 
-## Running Kubernetes (on istio service mesh).
+# Deploying with Kubernetes (on istio service mesh).
 1. Install minikube on your machine.
 2. Start a local kubernetes cluster by running `minikube start --driver=docker`. Note: you can choose to give more resources to the cluster by adding flags `--memory=4096 --cpus=4`.
 3. Install istioctl on your machine by running `istioctl install` after adding <path-to-istio>/bin to your PATH. For istio, make sure you install all the necessary add ons by running `kubectl apply -f <path-to-istio>/samples/addons/[prometheus/jaeger/kiali].yaml`.
