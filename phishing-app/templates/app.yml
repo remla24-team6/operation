@@ -26,11 +26,11 @@ spec:
         command: ["python3", "manage.py", "runserver", "0.0.0.0:{{ .Values.app.servicePort }}"]
         volumeMounts:
           - mountPath: {{ .Values.app.mountPath }}
-            name: test-volume
+            name: myvolume
       volumes:
-      - name: test-volume
-        persistentVolumeClaim:
-          claimName: pvc-app
+        - name: myvolume
+          persistentVolumeClaim:
+            claimName: pvc-app
 ---
 apiVersion: apps/v1
 kind: Deployment

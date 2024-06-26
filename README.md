@@ -49,8 +49,10 @@ TODO
 6. Install the phishing-app using helm by running `helm install phishing-app ./phishing-app -n operations`. Note: The Helm chart supports namespaces
 and can be installed more than once into the same cluster.
 7. Check if the pods and servies are up by running `kubectl get pods -n operations` and `kubectl get services -n operations`.
-8. Create a tunnel using `minikube tunnel`
+8. Create a tunnel using `minikube tunnel` or use `kubectl port-forward svc/istio-ingressgateway -n istio-system 8000:80`
 9.  Now, run the app on `localhost`
+
+**Note:** Helm install can take a long time to finish setting up.
 
 ## Comments 
 

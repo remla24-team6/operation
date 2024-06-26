@@ -1,26 +1,23 @@
-kind: PersistentVolume
 apiVersion: v1
+kind: PersistentVolume
 metadata:
   name: pv-app
-  labels:
-    type: local
 spec:
-  storageClassName: manual
   capacity:
-    storage: 2Gi
+    storage: 1Gi
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: /usr/storage
+    path: "/mnt/data"
 ---
-kind: PersistentVolumeClaim
 apiVersion: v1
+kind: PersistentVolumeClaim
 metadata:
-   name: pvc-app
+  name: pvc-app
 spec:
-   storageClassName: manual
-   accessModes:
-      - ReadWriteOnce
-   resources:
-      requests:
-         storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
