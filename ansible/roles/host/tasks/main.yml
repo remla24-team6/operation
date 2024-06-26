@@ -1,0 +1,37 @@
+- name: Get kube config
+  ansible.builtin.command: cat /var/snap/microk8s/current/credentials/client.config
+  register: controller_config
+  changed_when: false
+
+- name: Save kube config
+  ansible.builtin.copy:
+    content: "{{ controller_config.stdout }}"
+    dest: /vagrant/microk8s-config
+    mode: "0600"
+
+- name: Fix kube config server address
+  ansible.builtin.replace:
+    path: /vagrant/microk8s-config
+    regexp: 'server: https://127\.0\.0\.1:'
+    replace: "server: https://{{ controller_ip }}:"
+
+- name: Enable microk8s modules
+  ansible.builtin.command: microk8s enable {{ item }}
+  with_items:
+    - dns
+    - host-access
+    - ingress
+  become: true
+  changed_when: false
+  register: enabled_microk8s_modules
+  until: enabled_microk8s_modules.rc == 0
+  retries: 3
+
+- name: Copy Kubernetes directory to target hosts
+  ansible.builtin.copy:
+    src: ../../../../kubernetes/
+    dest: /tmp/kubernetes/
+    owner: root
+    group: root
+    mode: "0755"
+  become: true
