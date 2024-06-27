@@ -18,6 +18,7 @@ Operation repository for CS4295 Release Engineering for Machine Learning Applica
 4. Navigate into the repo and run `docker-compose up`
 5. Go to [http://0.0.0.0:8000/](http://0.0.0.0:8000/) and test the system.
 
+![Visual overview of PHISH App.](kiali.png)
 
 ## Provisioning
 
