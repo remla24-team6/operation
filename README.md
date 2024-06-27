@@ -53,7 +53,7 @@ Furthermore, in both cases, the join command is extracted in the worker node, bu
 
 ## Comments 
 
-### Comments for A1:
+### Comments for A1
 For this week's submission we implemented the following activities:
 - Converted the notebook into Python scripts.
 - Add dvc pipeline to train the model.
@@ -62,7 +62,7 @@ For this week's submission we implemented the following activities:
 - Installed and configured two linters (pylint & flake8) to check code quality.
 - Display pylint code quality information in output file.
 
-### Comments for A2:
+### Comments for A2
 For this week's submission we implemented the following activities:
 - Separated out the phishing pre-prcessing logic into a separate python package (ml-lib)
 - Updated model training repository to use the pre-prcessing library. Added linters to github workflow.
@@ -71,7 +71,7 @@ For this week's submission we implemented the following activities:
   This service uses the lib-ml python package for preprocessing. Implements Swagger for API documentation.
 - Created a Django app that has both the app-frontend and the app-service (app)
 
-### Comments for A3:
+### Comments for A3
 For this week's submission we implemented the following activities:
 - Uses Vagrant to define the virtual hardware and network setup through infrastructure as code.
 - Applies Ansible to prepare the necessary runtime environment. Controller/node connections are not set up yet.
@@ -80,7 +80,7 @@ For this week's submission we implemented the following activities:
 - Creates a Grafana dashboard that shows our custom metrics.
 
   
-### Comments for A4:
+### Comments for A4
 
 NOTE: We skip the inference and memory test by default due to their computational expensiveness. Setting the flag `SKIP_<INFERENCE|MEMORY>_TEST=False` allows u to run the tests if desired.
 
@@ -95,5 +95,12 @@ For this week's submission we implemented the following activities:
   -  Memory and Performance test.
 - We have an initial mutamorphic test. 
   - Tests are triggered by running dvc repro.
+  
 
+  ### Comments for A5
+- We extended the webapp by adding functionality to provide feedback w.r.t. the model's predictions.
+- We use Istio for our deployments and use a `Gateway` and `Virtual Service` to make our web app accessible.
+- `DestinationRules` are used to realise the canary release.
+- We set up the infrastructure to run experiments. Our current experiment concerns the increased traffic when we style the front-end application.
+- The additional use case is Rate Limiting. The service throttles excessive traffic from users.
   
