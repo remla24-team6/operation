@@ -3,42 +3,42 @@ Operation repository for CS4295 Release Engineering for Machine Learning Applica
 
 ### Repositories
 
-- operation: [operation](https://github.com/remla24-team6/operation/tree/A3)
-- model training: [phishing-detection-cnn](https://github.com/remla24-team6/phishing_detection_cnn/tree/A4)
-- model service: [model_service](https://github.com/remla24-team6/model-service/tree/A3)
-- app: [app](https://github.com/remla24-team6/app/tree/A3)
-- lib-version: [lib-version](https://github.com/remla24-team6/lib-version/tree/A3)
-- ml-lib: [ml-lib](https://github.com/remla24-team6/ml-lib/tree/A3)
+- operation: [operation](https://github.com/remla24-team6/operation/tree/main)
+- model training: [phishing-detection-cnn](https://github.com/remla24-team6/phishing_detection_cnn/tree/main)
+- model service: [model_service](https://github.com/remla24-team6/model-service/tree/main)
+- app: [app](https://github.com/remla24-team6/app/tree/main)
+- lib-version: [lib-version](https://github.com/remla24-team6/lib-version/tree/main)
+- ml-lib: [ml-lib](https://github.com/remla24-team6/ml-lib/tree/main)
 
 ## Running via docker-compose:
 
 1. Make sure that docker is installed.
 2. Clone the repo
-3. Navigate into the repo and run `docker-compose up`
-4. Go to [http://0.0.0.0:8000/](http://0.0.0.0:8000/) and test the system.
+3. Perform the API Configuration as described [here](https://github.com/remla24-team6/model-service) (Create the `.flaskenv` file)
+4. Navigate into the repo and run `docker-compose up`
+5. Go to [http://0.0.0.0:8000/](http://0.0.0.0:8000/) and test the system.
 
 
-## Running with Vagrant/Ansible/Kubernetes
+## Provisioning
 
 Make sure you have cloned this repository.
-
-### Vagrant
 
 Make sure vagrant is installed along with an appropriate provider (e.g. VirtualBox).
 To set up the nodes in the system, run:
 ```
-vagrant up
+vagrant up --provision
 ```
 Sometimes vagrant is a bit flaky and does not set up the nodes properly. If this is the case, run:
 ```
 vagrant destroy <malfunctioning node>
-vagrant up
+vagrant up --provision
 ```
 
 The control node should be available on `192.168.60.2`. The worker nodes should be available on `192.168.61.2`, `192.168.61.3` ... etc. (If you configure more than 2 worker nodes)
+Upon running `vagrant up --provision`, the ansible playbook should automatically be triggered for any node. Two attempts at provisioning (`playbook.yaml` and `ansible/provisioning.yaml`) have been made (with a lot of time and effort),
+but neither of them worked in the end. Both install docker and a kubernetes distribution on the respective nodes, initialize a cluster in the control node and generate a join command.
+Furthermore, in both cases, the join command is extracted in the worker node, but we did not manage to get the worker nodes to join the control nodes. However, we hope that these attempts display our efforts
 
-### Ansible
-TODO
 
 ## Running the application using Helm
 1. Install minikube on your machine.
@@ -56,7 +56,7 @@ and can be installed more than once into the same cluster.
 
 ## Comments 
 
-### Comments for A1:
+### Comments for A1
 For this week's submission we implemented the following activities:
 - Converted the notebook into Python scripts.
 - Add dvc pipeline to train the model.
@@ -65,7 +65,7 @@ For this week's submission we implemented the following activities:
 - Installed and configured two linters (pylint & flake8) to check code quality.
 - Display pylint code quality information in output file.
 
-### Comments for A2:
+### Comments for A2
 For this week's submission we implemented the following activities:
 - Separated out the phishing pre-prcessing logic into a separate python package (ml-lib)
 - Updated model training repository to use the pre-prcessing library. Added linters to github workflow.
@@ -74,7 +74,7 @@ For this week's submission we implemented the following activities:
   This service uses the lib-ml python package for preprocessing. Implements Swagger for API documentation.
 - Created a Django app that has both the app-frontend and the app-service (app)
 
-### Comments for A3:
+### Comments for A3
 For this week's submission we implemented the following activities:
 - Uses Vagrant to define the virtual hardware and network setup through infrastructure as code.
 - Applies Ansible to prepare the necessary runtime environment. Controller/node connections are not set up yet.
@@ -83,7 +83,7 @@ For this week's submission we implemented the following activities:
 - Creates a Grafana dashboard that shows our custom metrics.
 
   
-### Comments for A4:
+### Comments for A4
 
 NOTE: We skip the inference and memory test by default due to their computational expensiveness. Setting the flag `SKIP_<INFERENCE|MEMORY>_TEST=False` allows u to run the tests if desired.
 
@@ -98,5 +98,12 @@ For this week's submission we implemented the following activities:
   -  Memory and Performance test.
 - We have an initial mutamorphic test. 
   - Tests are triggered by running dvc repro.
+  
 
+  ### Comments for A5
+- We extended the webapp by adding functionality to provide feedback w.r.t. the model's predictions.
+- We use Istio for our deployments and use a `Gateway` and `Virtual Service` to make our web app accessible.
+- `DestinationRules` are used to realise the canary release.
+- We set up the infrastructure to run experiments. Our current experiment concerns the increased traffic when we style the front-end application.
+- The additional use case is Rate Limiting. The service throttles excessive traffic from users.
   
