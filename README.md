@@ -18,8 +18,6 @@ Operation repository for CS4295 Release Engineering for Machine Learning Applica
 4. Navigate into the repo and run `docker-compose up`
 5. Go to [http://0.0.0.0:8000/](http://0.0.0.0:8000/) and test the system.
 
-![Visual overview of PHISH App.](kiali.png)
-
 ## Provisioning
 
 Make sure you have cloned this repository.
@@ -56,7 +54,8 @@ and can be installed more than once into the same cluster.
 
 **Note:** Helm install can take a long time to finish setting up.
 
-
+### Deployment chart:
+![Visual overview of PHISH App.](kiali.png)
 
 ### Grafana Dashboard
 
@@ -70,9 +69,13 @@ To set up the dashboard, please:
 
 ### Rate limiting
 
-To enable rate limiting, run 
-```kubectl apply -f ratelimiting.yaml``` 
-```kubectl apply -f <path-to-istio>/samples/ratelimit/rate-limit-service.yaml -n operations```
+To enable rate limiting, run:
+
+```
+kubectl apply -f ratelimiting.yaml
+kubectl apply -f <path-to-istio>/samples/ratelimit/rate-limit-service.yaml -n operations
+```
+
 If more than 10 requests come in within a minute, an error with `429 Too Many Requests` should come up.
 
 
