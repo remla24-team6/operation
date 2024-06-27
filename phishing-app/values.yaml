@@ -1,0 +1,26 @@
+# Default values for phishing_app.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+app:
+  v1Version: "6.0.0"
+  v2Version: "5.0.0"
+  servicePort: 8000
+  targetPort: 8000
+  replicaCount: 1
+  mountPath: /usr/local/phishing/app/data
+
+model:
+  version: "latest"
+  servicePort: 5000
+  targetPort: 5000
+  replicaCount: 1
+
+istio:
+  routes:
+    - version: v1
+      weight: 90
+    - version: v2
+      weight: 10

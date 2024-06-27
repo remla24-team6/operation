@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-phishing-detection-app-v1
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: {{ .Values.app.replicaCount }}
+  selector:
+    matchLabels:
+      deployment: app
+  template:
+    metadata:
+      labels: { deployment: app, version: v1 }
+      annotations:
+          prometheus.io/scrape: "true"
+          prometheus.io/path: "/metrics"
+          prometheus.io/port: "{{ .Values.app.servicePort }}"
+    spec:
+      containers:
+      - name: {{ .Release.Name }}-django-app
+        image: ghcr.io/remla24-team6/app:{{ .Values.app.v1Version }}
+        ports:
+        - containerPort: {{ .Values.app.servicePort }}
+        envFrom:
+        - configMapRef:
+            name: {{ .Release.Name }}-app-config
+        command: ["python3", "manage.py", "runserver", "0.0.0.0:{{ .Values.app.servicePort }}"]
+        volumeMounts:
+          - mountPath: {{ .Values.app.mountPath }}
+            name: myvolume
+      volumes:
+        - name: myvolume
+          persistentVolumeClaim:
+            claimName: pvc-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-phishing-detection-app-v2
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: {{ .Values.app.replicaCount }}
+  selector:
+    matchLabels:
+      deployment: app
+  template:
+    metadata:
+      labels: { deployment: app, version: v2 }
+      annotations:
+          prometheus.io/scrape: "true"
+          prometheus.io/port: "{{ .Values.app.servicePort }}"
+    spec:
+      containers:
+      - name: {{ .Release.Name }}-django-app
+        image: ghcr.io/remla24-team6/app:{{ .Values.app.v2Version }}
+        ports:
+        - containerPort: {{ .Values.app.servicePort }}
+        envFrom:
+        - configMapRef:
+            name: {{ .Release.Name }}-app-config
+        command: ["python3", "manage.py", "runserver", "0.0.0.0:{{ .Values.app.servicePort }}"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-django-app-service
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    deployment: app
+  ports:
+    - port: {{ .Values.app.servicePort }}
+      targetPort: {{ .Values.app.targetPort }}

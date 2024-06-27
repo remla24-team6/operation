@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-phishing-detection-model
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: {{ .Values.model.replicaCount }}
+  selector:
+    matchLabels:
+      deployment: model
+  template:
+    metadata:
+      labels:
+        deployment: model
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "{{ .Values.model.servicePort }}"
+    spec:
+      containers:
+      - name: {{ .Release.Name }}-model
+        image: ghcr.io/remla24-team6/model-service:{{ .Values.model.version }}
+        ports:
+        - containerPort: {{ .Values.model.servicePort }}
+        envFrom:
+            - configMapRef:
+                name: {{ .Release.Name }}-app-config
+        command: ["poetry", "run", "flask", "run", "--host=0.0.0.0", "-p", "{{ .Values.model.servicePort }}"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-model-service
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    deployment: model
+  ports:
+    - port: {{ .Values.model.servicePort }}
+      targetPort: {{ .Values.model.targetPort }}

@@ -40,16 +40,19 @@ but neither of them worked in the end. Both install docker and a kubernetes dist
 Furthermore, in both cases, the join command is extracted in the worker node, but we did not manage to get the worker nodes to join the control nodes. However, we hope that these attempts display our efforts
 
 
-# Deploying with Kubernetes (on istio service mesh).
+## Running the application using Helm
 1. Install minikube on your machine.
 2. Start a local kubernetes cluster by running `minikube start --driver=docker`. Note: you can choose to give more resources to the cluster by adding flags `--memory=4096 --cpus=4`.
 3. Install istioctl on your machine by running `istioctl install` after adding <path-to-istio>/bin to your PATH. For istio, make sure you install all the necessary add ons by running `kubectl apply -f <path-to-istio>/samples/addons/[prometheus/jaeger/kiali].yaml`.
 4. Create namespace to run our project by running `kubectl create namespace operations`.
-5. Add istio injection for the operations namespace by running `kubectl label ns operations istio-injection=enabled`
-6. Run the application by running `kubectl apply -f kubernetes` from the root directory of this repository.
+5. Add istio injection for the operations namespace by running `kubectl label ns operations istio-injection=enabled`.
+6. Install the phishing-app using helm by running `helm install phishing-app ./phishing-app -n operations`. Note: The Helm chart supports namespaces
+and can be installed more than once into the same cluster.
 7. Check if the pods and servies are up by running `kubectl get pods -n operations` and `kubectl get services -n operations`.
-8. Create a tunnel using `minikube tunnel`
+8. Create a tunnel using `minikube tunnel` or use `kubectl port-forward svc/istio-ingressgateway -n istio-system 8000:80`
 9.  Now, run the app on `localhost`
+
+**Note:** Helm install can take a long time to finish setting up.
 
 ## Comments 
 

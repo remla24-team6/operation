@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-app-config
+  namespace: {{ .Release.Namespace }}
+data:
+  MODEL_SERVICE_URL: "http://{{ .Release.Name }}-model-service:5000"
+  IS_DEBUG: "True"
+  HOST: "0.0.0.0"
+  PORT: "5001"
+  GDRIVE_ID: "1e1FyntLFwb1heG-_64uzxktGtGiD-kHs"
+  SAVE_MODEL_FOLDER: "models/"
+  SAVE_MODEL_FILENAME: "model.joblib"
+  SAVE_TRAINING_DATA_FOLDER: "/usr/local/phishing/app/data/"
+  SAVE_TRAINING_DATA_FILENAME: "data.csv"
