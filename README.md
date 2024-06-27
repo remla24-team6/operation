@@ -50,9 +50,23 @@ Furthermore, in both cases, the join command is extracted in the worker node, bu
 and can be installed more than once into the same cluster.
 7. Check if the pods and servies are up by running `kubectl get pods -n operations` and `kubectl get services -n operations`.
 8. Create a tunnel using `minikube tunnel` or use `kubectl port-forward svc/istio-ingressgateway -n istio-system 8000:80`
-9.  Now, run the app on `localhost`
+9. Apply ` kubectl apply -f prometheus.yml -n istio-system`.
+10.  Now, run the app on `localhost`
 
 **Note:** Helm install can take a long time to finish setting up.
+
+
+
+### Grafana Dashboard
+
+Our collected are metrics are model performance (Gauge), feedback collected (Counter), url length (Histogram), inference time (Summary).
+To set up the dashboard, please:
+1. Open Grafana using `istioctl dashboard grafana`.
+2. Nabigate to `Dashboards`, on the top right, click "New" and click "Import" from the dropdown menu.
+3. Upload the `dashboard-grafana.json` file. 
+
+![Dashboard](assets/dashboard.png)
+
 
 ## Comments 
 
