@@ -3,6 +3,10 @@ kind: Gateway
 metadata:
   name: {{ .Release.Name }}-istio-gateway
   namespace: {{ .Release.Namespace }}
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/path: "/metrics"
+    prometheus.io/port: "80"
 spec:
   selector:
     istio: ingressgateway

@@ -11,9 +11,10 @@ spec:
   template:
     metadata:
       labels: { deployment: app, version: v1 }
-    annotations:
-        prometheus.io/scrape: "true"
-        prometheus.io/port: "{{ .Values.app.servicePort }}"
+      annotations:
+          prometheus.io/scrape: "true"
+          prometheus.io/path: "/metrics"
+          prometheus.io/port: "{{ .Values.app.servicePort }}"
     spec:
       containers:
       - name: {{ .Release.Name }}-django-app
@@ -45,9 +46,9 @@ spec:
   template:
     metadata:
       labels: { deployment: app, version: v2 }
-    annotations:
-        prometheus.io/scrape: "true"
-        prometheus.io/port: "{{ .Values.app.servicePort }}"
+      annotations:
+          prometheus.io/scrape: "true"
+          prometheus.io/port: "{{ .Values.app.servicePort }}"
     spec:
       containers:
       - name: {{ .Release.Name }}-django-app

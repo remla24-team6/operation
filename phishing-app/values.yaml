@@ -5,8 +5,8 @@
 replicaCount: 1
 
 app:
-  v1Version: "latest"
-  v2Version: "0.0.7"
+  v1Version: "6.0.0"
+  v2Version: "5.0.0"
   servicePort: 8000
   targetPort: 8000
   replicaCount: 1
