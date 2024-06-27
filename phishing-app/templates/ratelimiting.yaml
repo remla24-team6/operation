@@ -65,7 +65,7 @@ spec:
         context: GATEWAY
         routeConfiguration:
           vhost:
-            name: ""
+            name: "phishing-app-istio-gateway"
             route:
               action: ANY
       patch:
