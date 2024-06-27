@@ -20,14 +20,14 @@ data:
       static_configs:
       - targets:
         - localhost:9090
-    - job_name: 'version-1'
-      static_configs:
-        - targets: ['172.17.0.12:15020']
-      metrics_path: '/metrics'
-    - job_name: 'version-2'
-      static_configs:
-        - targets: ['172.17.0.10:15020']
-      metrics_path: '/metrics'
+    # - job_name: 'version-1'
+    #   static_configs:
+    #     - targets: ['10.244.0.9:15020']
+    #   metrics_path: '/metrics'
+    # - job_name: 'version-2'
+    #   static_configs:
+    #     - targets: ['10.244.0.10:15020']
+    #   metrics_path: '/metrics'
     - bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
       job_name: kubernetes-apiservers
       kubernetes_sd_configs:
